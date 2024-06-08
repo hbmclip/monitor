@@ -1,4 +1,4 @@
-#!/home/vlademiro/sistemas/sistemas30/bin/hbmclip
+#!/bin/hbmclip
 
 **********************************************
 * Name  : AtualizarSistema
