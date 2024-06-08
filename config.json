@@ -1,12 +1,12 @@
 {
     "sysname": "Monitoramento de rede",
-    "orgname": "Universidade Federal do Ceará",
-    "deptname": "Departamento de Computação",
-    "complement": "LIA",
-    "address01": "Campus do Pici S/N",
-    "address02": "Bloco 910",
-    "email": "vla@dc.ufc.br",
-    "url": "www.dc.ufc.br",
+    "orgname": "",
+    "deptname": "",
+    "complement": "",
+    "address01": "",
+    "address02": "",
+    "email": "",
+    "url": "",
     "comment_gttype": "GT Drive. Values: null (only quotes),crt,win,std. Null string = Standard Harbour",
     "gttype": "",
     "comment_log": "Log configuration",
@@ -101,7 +101,6 @@
     "version":"0.01",
     "update":
     {
-        "zip":"https://github.com/hbmclip/monitor/archive/refs/heads/main.zip",
         "ver":"https://raw.githubusercontent.com/hbmclip/monitor/main/config.json"
     }   
 }
