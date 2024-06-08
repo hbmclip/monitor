@@ -73,7 +73,7 @@ PROCEDURE AtualizarSistema( ... )
              
             /* Parte 3 : existem mudanças ? */ 
             IF EMPTY(cMudancas)
-                ImpTextScr( "Não existem atualizações disponíveis no momento"  )
+                FootPauseScreen( "Não existem atualizações disponíveis no momento"  )
                 EXIT
             ENDIF    
 
