@@ -62,8 +62,7 @@ PROCEDURE AtualizarSistema( ... )
             hb_MemoWrit( "update.log" , .NOT. IsExecError() )
             ImpTextScr( "Atualizando o sistema " , lRet  )
         ENDIF    
-
-        ALERT("Processo finalizado.;Você pode consultar os logs da operação em update.log")
+        FootPauseScreen("Processo finalizado.Você pode consultar os logs da operação em update.log")
     ELSE        
         alert("O processo de atualização não será realizado.")
     ENDIF    
