@@ -56,25 +56,26 @@ PROCEDURE AtualizarSistema( ... )
         DO WHILE .t.
             /* Parte 1 : verificando softwares necessários */
             VLJ_RUN( "git" )
-            lRet := .NOT. IsExecError()
-            hb_MemoWrit( "update.log" , ExecError() )
+            lRet := IsExecSuccess()
             ImpTextScr( "Verificando os softwares necessários " , lRet  )
             IF .NOT. lRet
+                hb_MemoWrit( "update.log" , ExecError() )
                 EXIT
             ENDIF    
             /* Parte 2 : verificando se existem mudanças */
             cMudancas := VLJ_RUN( "git fetch --dry-run" )
             ImpTextScr( "Verificando se existem mudanças" , .t. ) // Retorno de --dry-run é confuso
-            IF EMPTY(cMudancas)
+            IF !EMPTY(cMudancas) /* --dry-run quando retorna é para saida de erro */
                 alert( "Não existem atualizações disponíveis no momento"  )
                 EXIT
             ENDIF    
 
             /* Parte 3 : aplicando as mudanças */   
             VLJ_RUN( "git pull" )
-            hb_MemoWrit( "update.log" , ExecError() )
+            lRet := IsExecSuccess()
             ImpTextScr( "Atualizando o sistema " , lRet  )
             IF .NOT. lRet
+                hb_MemoWrit( "update.log" , ExecError() )
                 EXIT
             ENDIF    
             
