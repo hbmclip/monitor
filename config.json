@@ -103,7 +103,7 @@
             "color03": "N/G,W+/R,N/G,N/G,N/G,N/G"
         }
     },
-    "version":"0.07",
+    "version":"0.08",
     "update":
     {
         "ver":"https://raw.githubusercontent.com/hbmclip/monitor/main/config.json"
