@@ -64,17 +64,10 @@ PROCEDURE AtualizarSistema( ... )
             ENDIF    
             /* Parte 2 : aplicando as mudanças */   
             cRetorno := VLJ_RUN( "git pull" )
-            lRet := IsExecSuccess()
-            ImpTextScr( "Atualizando o sistema " , lRet  )
-            IF .NOT. lRet
-                hb_MemoWrit( "update.log" , ExecError() )
-                EXIT
-            ELSE
-                IF hb_AT( "Already up to date", cRetorno ) <> 0     
-                    alert( "Não foram detectadas alterações" )
-                ENDIF
-            ENDIF    
-            
+            ImpTextScr( "Atualizando o sistema " , .t.  )
+            IF hb_AT( "Already up to date", cRetorno ) <> 0     
+                alert( "Não foram detectadas alterações" )
+            ENDIF
             FootPauseScreen("Processo finalizado com sucesso.")
             EXIT
         ENDDO    
