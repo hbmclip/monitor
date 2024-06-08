@@ -53,16 +53,42 @@ PROCEDURE AtualizarSistema( ... )
     
     ImpTextScrInit( 10 , 5 , 50 , { "SUCESSO" , " FALHA "} )
     IF sn( "Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
-        VLJ_RUN( "git" )
-        lRet := .NOT. IsExecError()
-        hb_MemoWrit( "update.log" , ExecError() )
-        ImpTextScr( "Verificando os softwares necessários " , lRet  )
-        IF lRet
+        DO WHILE .t.
+            /* Parte 1 : verificando softwares necessários */
+            VLJ_RUN( "git" )
+            lRet := .NOT. IsExecError()
+            hb_MemoWrit( "update.log" , ExecError() )
+            ImpTextScr( "Verificando os softwares necessários " , lRet  )
+            IF .NOT. lRet
+                EXIT
+            ENDIF    
+            /* Parte 1 : verificando se existem mudanças */
+            cMudancas := VLJ_RUN( "git fetch --dry-run" )
+            hb_MemoWrit( "update.log" , ExecError() )
+            ImpTextScr( "Verificando se existem mudanças" , .NOT. EMPTY(cMudancas)  )
+            lRet := .NOT. IsExecError()
+            IF .NOT. lRet
+                EXIT
+            ENDIF    
+
+            IF EMPTY(cMudancas)
+                ImpTextScr( "Não existem atualizações disponíveis no momento"  )
+                EXIT
+            ENDIF    
+
             VLJ_RUN( "git pull" )
-            hb_MemoWrit( "update.log" , .NOT. IsExecError() )
+            hb_MemoWrit( "update.log" , ExecError() )
             ImpTextScr( "Atualizando o sistema " , lRet  )
+            IF .NOT. lRet
+                EXIT
+            ENDIF    
+            
+            FootPauseScreen("Processo finalizado.Você pode consultar os logs da operação em update.log")
+            EXIT
+        ENDDO    
+        IF .NOT. lRet
+            alert("Erros foram detectados. Verifique o update.log")
         ENDIF    
-        FootPauseScreen("Processo finalizado.Você pode consultar os logs da operação em update.log")
     ELSE        
         alert("O processo de atualização não será realizado.")
     ENDIF    
