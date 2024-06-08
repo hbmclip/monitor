@@ -51,7 +51,7 @@ PROCEDURE AtualizarSistema( ... )
 
     /* Insert your code here */
     
-    ImpTextScrInit( 10 , 5 , 50 , { "SUCESSO" , " FALHA "} )
+    ImpTextScrInit( 10 , 3 , 70 , { "SUCESSO" , " FALHA "} )
     IF sn( "Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
         DO WHILE .t.
             /* Parte 1 : verificando softwares necessários */
@@ -62,20 +62,22 @@ PROCEDURE AtualizarSistema( ... )
             IF .NOT. lRet
                 EXIT
             ENDIF    
-            /* Parte 1 : verificando se existem mudanças */
+            /* Parte 2 : verificando se existem mudanças */
             cMudancas := VLJ_RUN( "git fetch --dry-run" )
-            hb_MemoWrit( "update.log" , ExecError() )
-            ImpTextScr( "Verificando se existem mudanças" , .NOT. EMPTY(cMudancas)  )
             lRet := .NOT. IsExecError()
+            hb_MemoWrit( "update.log" , ExecError()  )
+            ImpTextScr( "Verificando se existem mudanças" , lRet  )
             IF .NOT. lRet
                 EXIT
             ENDIF    
-
+             
+            /* Parte 3 : existem mudanças ? */ 
             IF EMPTY(cMudancas)
                 ImpTextScr( "Não existem atualizações disponíveis no momento"  )
                 EXIT
             ENDIF    
 
+            /* Parte 4 : aplicando as mudanças */
             VLJ_RUN( "git pull" )
             hb_MemoWrit( "update.log" , ExecError() )
             ImpTextScr( "Atualizando o sistema " , lRet  )
@@ -83,7 +85,7 @@ PROCEDURE AtualizarSistema( ... )
                 EXIT
             ENDIF    
             
-            FootPauseScreen("Processo finalizado.Você pode consultar os logs da operação em update.log")
+            FootPauseScreen("Processo finalizado com sucesso.")
             EXIT
         ENDDO    
         IF .NOT. lRet
