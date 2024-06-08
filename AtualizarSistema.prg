@@ -73,11 +73,11 @@ PROCEDURE AtualizarSistema( ... )
              
             /* Parte 3 : existem mudanças ? */ 
             IF EMPTY(cMudancas)
-                FootPauseScreen( "Não existem atualizações disponíveis no momento"  )
+                alert( "Não existem atualizações disponíveis no momento"  )
                 EXIT
             ENDIF    
 
-            /* Parte 4 : aplicando as mudanças */
+            /* Parte 4 : aplicando as mudanças */   
             VLJ_RUN( "git pull" )
             hb_MemoWrit( "update.log" , ExecError() )
             ImpTextScr( "Atualizando o sistema " , lRet  )
