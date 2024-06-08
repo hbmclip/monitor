@@ -51,6 +51,10 @@ PROCEDURE nmapSimpleForm( ... )
     ************************************************************************************
 
     /* Insert your code here */
+    IF !SN("Atenção! Esse processo costuma demorar muito.;Deseja continuar ?")
+        alert("Processo cancelado")
+        return
+    ENDIF    
     cIP := SPACE(30)
     @ 07,05 SAY "Endereço IP para análise : " GET cIP
     READ
