@@ -70,7 +70,7 @@ PROCEDURE AtualizarSistema( ... )
                 hb_MemoWrit( "update.log" , ExecError() )
                 EXIT
             ELSE
-                IF hb_AT( "Already up to date", cMessage ) <> 0     
+                IF hb_AT( "Already up to date", cRetorno ) <> 0     
                     alert( "Não foram detectadas alterações" )
                 ENDIF
             ENDIF    
