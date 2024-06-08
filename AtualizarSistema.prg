@@ -55,7 +55,7 @@ PROCEDURE AtualizarSistema( ... )
     IF sn( "Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
         DO WHILE .t.
             /* Parte 1 : verificando softwares necessários */
-            VLJ_RUN( "git" )
+            VLJ_RUN( "git status" )
             lRet := IsExecSuccess()
             ImpTextScr( "Verificando os softwares necessários " , lRet  )
             IF .NOT. lRet
