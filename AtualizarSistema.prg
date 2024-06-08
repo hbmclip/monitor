@@ -67,6 +67,8 @@ PROCEDURE AtualizarSistema( ... )
             ImpTextScr( "Atualizando o sistema " , .t.  )
             IF hb_AT( "Already up to date", cRetorno ) <> 0     
                 alert( "Não foram detectadas alterações" )
+            ELSE
+                ImpTextScr( "Sistema atualizado!"  )
             ENDIF
             FootPauseScreen("Processo finalizado com sucesso.")
             EXIT
