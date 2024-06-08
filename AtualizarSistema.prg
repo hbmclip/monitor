@@ -65,8 +65,7 @@ PROCEDURE AtualizarSistema( ... )
             /* Parte 2 : aplicando as mudanças */   
             cRetorno := VLJ_RUN( "git pull" )
             ImpTextScr( "Atualizando o sistema " , .t.  )
-            alert( hb_valtoexp( alltrim(cRetorno) ))
-            IF "Already up to date." == ALLTRIM(cRetorno)      
+            IF e"Already up to date.\n" == ALLTRIM(cRetorno)      
                 alert( "Não foram detectadas alterações." )
             ELSE
                 ImpTextScr( "Sistema atualizado."  )
