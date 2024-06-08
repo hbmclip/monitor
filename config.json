@@ -1,0 +1,101 @@
+{
+    "sysname": "Monitoramento de rede",
+    "orgname": "Universidade Federal do Ceará",
+    "deptname": "Departamento de Computação",
+    "complement": "LIA",
+    "address01": "Campus do Pici S/N",
+    "address02": "Bloco 910",
+    "email": "vla@dc.ufc.br",
+    "url": "www.dc.ufc.br",
+    "comment_gttype": "GT Drive. Values: null (only quotes),crt,win,std. Null string = Standard Harbour",
+    "gttype": "",
+    "comment_log": "Log configuration",
+    "loglevel": 1,
+    "logdisplay": true,
+    "setmode":
+    {
+        "row": "MAXROW",
+        "col": "MAXCOL"
+    },
+    "comment_database": "Database string configuration",
+    "database": "",
+    "comment_menu": "Menu configuration",
+    "menu":
+    {
+        "Iniciar":
+        [
+            {
+                "routine": "ChecarFerramentas.prg",
+                "caption": "Verificar instalações",
+                "message": "Verificar se as ferramentas foram instaladas."
+            },
+            {
+                "routine": "nmapSimpleForm.prg",
+                "caption": "Pesquisa simples com nmap",
+                "message": "Realiza um scanner simples com o nmap"
+            },   
+            {
+                "routine": "Sair_Do_Sistema",
+                "caption": "Sair do sistema",
+                "message": "Retornar ao sistema operacional."
+            }
+        ],
+        "Cadastros":
+        [
+            {
+                "routine": "CadGrupoHost.prg",
+                "caption": "Grupos de Hosts",
+                "message": "Cadastro de grupos de hosts."
+            },
+            {
+                "routine": "CadHost.prg",
+                "caption": "Hosts",
+                "message": "Cadastro de hosts."
+            }
+        ],
+        "Utilitários":
+        [
+            {
+                "routine": "AtualizarSistema.prg",
+                "caption": "Atualizar o sistema",
+                "message": "CUIDADO: Essa rotina requer cuidados especiais. Consulte a documentação."
+            },
+            {
+                "routine": "AtualizarBanco.prg",
+                "caption": "Atualizar a estrutura do banco de dados",
+                "message": "CUIDADO: Apenas o usuário principal deve estar usando o sistema."
+            },
+            {
+                "routine": "Backup.prg",
+                "caption": "Backup de dados",
+                "message": "Realiza uma cópia de segurança dos dados."
+            },
+            {
+                "routine": "Limpeza.prg",
+                "caption": "Apaga arquivos temporários",
+                "message": "Essa rotina exclui os arquivos que não são do sistema"
+            },
+            {
+                "routine": "Logs.prg",
+                "caption": "Ver os arquivos de log",
+                "message": "Verifica os arquivos de log do sistema"
+            }
+        ]
+    },
+    "comment_tui": "TUI configuration",
+    "tui":
+    {
+        "general":
+        {
+            "color01": "BG/N,R/W+,BG/GR+,R/GR+,BG/N+,BG/N",
+            "color02": "B+/N,R/W+,B+/N,B+/N,B+/N,B+/N",
+            "color03": "G/N,N/G,G/N,G/N,G/N,G/N"
+        },
+        "menu":
+        {
+            "color01": "N/BG,W+/R,GR+/BG,GR+/R,N+/BG,N/BG",
+            "color02": "N/B+,W+/R,N/B+,N/B+,N/B+,N/B+",
+            "color03": "N/G,W+/R,N/G,N/G,N/G,N/G"
+        }
+    }
+}
