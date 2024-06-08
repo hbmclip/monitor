@@ -5,8 +5,8 @@
 * Date  : 2024-06-05 - 21:46:56
 * Notes : 
 /*
-   1. 
-   2. 
+   1. Verifica se o git está instalado
+   2. Realiza git push
 */
 ***********************************************
 #include 'hbmediator.ch' // Use --virtual-include command line parameter (to use embedded file header)
