@@ -53,12 +53,12 @@ PROCEDURE AtualizarSistema( ... )
     
     ImpTextScrInit( 10 , 5 , 50 , { "SUCESSO" , " FALHA "} )
     IF sn( "Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
-        EXEC RUN "git" TO cResult AS ARRAY
+        VLJ_RUN( "git" )
         lRet := IsExecError()
         hb_MemoWrit( "update.log" , ExecError() )
         ImpTextScr( "Verificando os softwares necessários " , lRet  )
         IF lRet
-            EXEC RUN "git pull" TO cResult AS ARRAY
+            VLJ_RUN( "git pull" )
             lRet := IsExecError()
             hb_MemoWrit( "update.log" , ExecError() )
             ImpTextScr( "Atualizando o sistema " , lRet  )
