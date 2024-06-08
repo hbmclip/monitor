@@ -13,7 +13,7 @@
 PROCEDURE AtualizarSistema( ... )
     MODULE SHELL
 
-    LOCAL hParams , aData, cPrintParams 
+    LOCAL hParams , aData, cPrintParams , cResult
 
     **************************************Templates***************************************
     * SHELL ADD PARAM "-first" TITLE "First" BOOLEAN // Logical parameter
@@ -50,11 +50,20 @@ PROCEDURE AtualizarSistema( ... )
     ************************************************************************************
 
     /* Insert your code here */
-    USE hbmver SHARED
+    
     ImpTextScrInit( 10 , 5 , 50 , { "SUCESSO" , " FALHA "} )
-    IF sn( "A versão atual do sistema é " + hb_ntos(field->ver) + ";Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
-        ImpTextScr( "Verificando o acesso à internet." , .t.  )
-        ImpTextScr( "Verificando a próxima versão " , .t.  )
+    IF sn( "Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
+        EXEC RUN "git" TO cResult AS ARRAY
+        lRet := IsExecError()
+        hb_MemoWrit( "update.log" , ExecError() )
+        ImpTextScr( "Verificando os softwares necessários " , lRet  )
+        IF lRet
+            EXEC RUN "git pull" TO cResult AS ARRAY
+            lRet := IsExecError()
+            hb_MemoWrit( "update.log" , ExecError() )
+            ImpTextScr( "Atualizando o sistema " , lRet  )
+        ENDIF    
+
         ALERT("Processo finalizado.;Você pode consultar os logs da operação em update.log")
     ELSE        
         alert("O processo de atualização não será realizado.")
