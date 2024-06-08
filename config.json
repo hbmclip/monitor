@@ -98,6 +98,10 @@
             "color03": "N/G,W+/R,N/G,N/G,N/G,N/G"
         }
     },
-    "updateurl": "http://lia.ufc.br/~vla/monitor"
-
+    "version":"0.01",
+    "update":
+    {
+        "zip":"https://github.com/hbmclip/monitor/archive/refs/heads/main.zip",
+        "ver":"https://raw.githubusercontent.com/hbmclip/monitor/main/config.json"
+    }   
 }
