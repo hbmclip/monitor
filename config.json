@@ -35,6 +35,11 @@
                 "message": "Realiza um scanner simples com o nmap"
             },   
             {
+                "routine": "nmapCompleteForm.prg",
+                "caption": "Pesquisa completa com nmap",
+                "message": "Realiza um scanner em todas as portas com o nmap"
+            },   
+            {
                 "routine": "Sair_Do_Sistema",
                 "caption": "Sair do sistema",
                 "message": "Retornar ao sistema operacional."
