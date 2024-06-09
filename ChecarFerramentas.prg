@@ -56,6 +56,7 @@ PROCEDURE ChecarFerramentas( ... )
     ImpTextScrInit( 10 , 5 , 30 , { "SUCESSO" , " FALHA "} )
     aFerramenta := {}
     aadd( aFerramenta , "nmap --version" )
+    aadd( aFerramenta , "curl --version" )
     aadd( aFerramenta , "dnsenum" )
     aadd( aFerramenta , "fierce" )
     aadd( aFerramenta , "dmitry" )
