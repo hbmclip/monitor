@@ -51,7 +51,7 @@ PROCEDURE AtualizarSistema( ... )
 
     /* Insert your code here */
     
-    ImpTextScrInit( 10 , 3 , 70 , { "SUCESSO" , " FALHA "} )
+    ImpTextScrInit( 10 , 1 , 70 , { "SUCESSO" , " FALHA "} )
     IF sn( "Esse processo irá atualizar o sistema.;(IMPORTANTE:Não interrompa esse processo);Você deseja continuar ?" )
         DO WHILE .t.
             /* Parte 1 : verificando softwares necessários */
